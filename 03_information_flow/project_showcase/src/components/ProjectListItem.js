@@ -1,29 +1,18 @@
 import { useState } from "react";
 
 const ProjectListItem = ({ id, about, image, link, name, phase }) => {
-  
-  // const { about, image, link, name, phase } = project;
-  
-  // Create State / Setter Function to Manage Clap count
-  const [ clapCount, setClapCounts ] = useState(0);
 
-  // Mutating State
-    // We generally want to AVOID directly mutating state.
+  const [clapCount, setClapCount] = useState(0);
 
-  const handleClaps = () => {
-    
-    // Mutating State 
-    // setClapCounts(clapCount + 1);
-
-    // Not Mutating State
-    setClapCounts(prevCount => prevCount + 1);
-  }
+  const handleClap = () => setClapCount(clapCount + 1);
 
   return (
     <li className="card">
       <figure className="image">
         <img src={image} alt={name} />
-        <button onClick={handleClaps} className="claps">👏{clapCount}</button>
+        <button className="claps" onClick={handleClap}>
+          👏{clapCount}
+        </button>
       </figure>
 
       <section className="details">
@@ -41,6 +30,6 @@ const ProjectListItem = ({ id, about, image, link, name, phase }) => {
       </footer>
     </li>
   );
-};
+}
 
 export default ProjectListItem;
